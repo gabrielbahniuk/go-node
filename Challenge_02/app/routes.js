@@ -5,6 +5,8 @@ const authController = require('./controllers/authController');
 const dashboardController = require('./controllers/dashboardController');
 const authMiddleware = require('./middlewares/auth');
 const guestMiddleware = require('./middlewares/guest');
+const categoryController = require('./controllers/categoryController');
+const snippetController = require('./controllers/snippetController');
 
 routes.use((req, res, next) => {
   res.locals.flashSuccess = req.flash('success');
@@ -12,14 +14,36 @@ routes.use((req, res, next) => {
   next();
 });
 
+/**
+ * Auth
+ */
+
 routes.get('/', guestMiddleware, authController.signin);
 routes.get('/signup', guestMiddleware, authController.signup);
 routes.get('/signout', authController.signout);
 
 routes.post('/register', authController.register);
 routes.post('/authenticate', authController.authenticate);
+
+/**
+ * Dashboard
+ */
 routes.use('/app', authMiddleware);
 routes.get('/app/dashboard', dashboardController.index);
+
+/**
+ * Categoria
+ */
+routes.get('/app/categories/:id', categoryController.show);
+routes.post('/app/categories/create', categoryController.store);
+
+/**
+ * Snippets
+ */
+routes.get('/app/categories/:categoryId/snippets/:id', snippetController.show);
+routes.post('/app/categories/:categoryId/snippets/create', snippetController.store);
+routes.put('/app/categories/:categoryId/snippets/:id', snippetController.update);
+routes.delete('/app/categories/:categoryId/snippets/:id', snippetController.destroy);
 
 routes.use((req, res) => res.render('errors/404'));
 
