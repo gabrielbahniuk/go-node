@@ -26,7 +26,7 @@ module.exports = {
 
       const snippet = await Snippet.findById(id);
 
-      res.render('snippets/show', {
+      return res.render('snippets/show', {
         activeCategory: categoryId,
         categories,
         snippets,
