@@ -40,7 +40,7 @@ routes.post('/app/projects/create', projectController.store);
 /**
  * Sections
  */
-routes.get('/app/projects/:projectId/sections/:id', sectionController.show);
+routes.get('/app/project/:projectId/sections/:id', sectionController.show);
 routes.post('/app/projects/:projectId/sections/create', sectionController.store);
 routes.put('/app/projects/:projectId/sections/:id', sectionController.update);
 routes.delete('/app/projects/:projectId/sections/:id', sectionController.destroy);

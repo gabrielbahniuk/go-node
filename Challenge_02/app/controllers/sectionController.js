@@ -27,7 +27,7 @@ module.exports = {
       const section = await Section.findById(id);
 
       return res.render('sections/show', {
-        activeCategory: projectId,
+        activeProject: projectId,
         projects,
         sections,
         currentSection: section,
