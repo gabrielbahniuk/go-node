@@ -11,7 +11,7 @@ module.exports = {
     }
   },
 
-  async show(req, res, next) {
+  async showAll(req, res, next) {
     try {
       const user = await User.findOne({
         where: { id: req.session.user.id },
@@ -30,13 +30,22 @@ module.exports = {
         where: { id: req.params.id },
       });
 
-      return res.render('project/show', {
+      return res.render('projects/show', {
         projects,
         sections,
         activeProject: req.params.id,
         project,
         user,
       });
+    } catch (err) {
+      return next(err);
+    }
+  },
+  async destroy(req, res, next) {
+    try {
+      await Project.destroy({ where: { id: req.params.id } });
+      req.flash('success', 'Projeto removido com sucesso!');
+      return res.redirect('/app/dashboard');
     } catch (err) {
       return next(err);
     }

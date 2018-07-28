@@ -1,8 +1,55 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700');
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700");
 
 html,
 body {
   height: 100%;
+}
+.btn-edit-section {
+  border: none;
+  margin: 0 0 0 3em;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+
+  background: transparent;
+
+  /* inherit font & color from ancestor */
+  color: #007ebf;
+  font: inherit;
+
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
+}
+
+.btn-remove-section {
+  border: none;
+  margin: 0 0 0 3em;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+
+  background: transparent;
+
+  /* inherit font & color from ancestor */
+  color: #e06666;
+  font: inherit;
+
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
 }
 
 * {
@@ -13,13 +60,13 @@ body {
 
 body {
   background-color: #fff;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
 }
 
 button {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   cursor: pointer;
 }
 
@@ -218,7 +265,7 @@ textarea:focus {
 }
 
 .wrapper section#main #content .project-list a:after {
-  content: '';
+  content: "";
   width: 11px;
   height: 12px;
   background: url(img/right-double.svg);
@@ -258,7 +305,7 @@ textarea:focus {
 }
 
 .wrapper section#main #content nav .sessions a:after {
-  content: '';
+  content: "";
   width: 7px;
   height: 12px;
   background: url(img/right.svg) no-repeat;
