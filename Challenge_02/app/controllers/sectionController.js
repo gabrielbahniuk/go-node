@@ -1,4 +1,4 @@
-const { Section, Project } = require('../models');
+const { Section, Project, User } = require('../models');
 
 module.exports = {
   async store(req, res, next) {
@@ -24,6 +24,14 @@ module.exports = {
         where: { ProjectId: projectId },
       });
 
+      const project = await Project.findOne({
+        where: { id: projectId },
+      });
+
+      const user = await User.findOne({
+        where: { id: req.session.user.id },
+      });
+
       const section = await Section.findById(id);
 
       return res.render('sections/show', {
@@ -31,6 +39,8 @@ module.exports = {
         projects,
         sections,
         currentSection: section,
+        project,
+        user,
       });
     } catch (err) {
       return next(err);

@@ -19,7 +19,8 @@ module.exports = {
         type: DataTypes.STRING,
       },
       content: {
-        allowNull: false,
+        allowNull: true,
+        defaultValue: null,
         type: DataTypes.TEXT,
       },
       createdAt: {
