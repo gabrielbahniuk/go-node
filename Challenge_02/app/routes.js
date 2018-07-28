@@ -5,8 +5,8 @@ const authController = require('./controllers/authController');
 const dashboardController = require('./controllers/dashboardController');
 const authMiddleware = require('./middlewares/auth');
 const guestMiddleware = require('./middlewares/guest');
-const categoryController = require('./controllers/categoryController');
-const snippetController = require('./controllers/snippetController');
+const projectController = require('./controllers/projectController');
+const sectionController = require('./controllers/sectionController');
 
 routes.use((req, res, next) => {
   res.locals.flashSuccess = req.flash('success');
@@ -32,18 +32,18 @@ routes.use('/app', authMiddleware);
 routes.get('/app/dashboard', dashboardController.index);
 
 /**
- * Categoria
+ * Projects
  */
-routes.get('/app/categories/:id', categoryController.show);
-routes.post('/app/categories/create', categoryController.store);
+routes.get('/app/projects/:id', projectController.show);
+routes.post('/app/projects/create', projectController.store);
 
 /**
- * Snippets
+ * Sections
  */
-routes.get('/app/categories/:categoryId/snippets/:id', snippetController.show);
-routes.post('/app/categories/:categoryId/snippets/create', snippetController.store);
-routes.put('/app/categories/:categoryId/snippets/:id', snippetController.update);
-routes.delete('/app/categories/:categoryId/snippets/:id', snippetController.destroy);
+routes.get('/app/project/:projectId/sections/:id', sectionController.show);
+routes.post('/app/projects/:projectId/sections/create', sectionController.store);
+routes.put('/app/projects/:projectId/sections/:id', sectionController.update);
+routes.delete('/app/projects/:projectId/sections/:id', sectionController.destroy);
 
 routes.use((req, res) => res.render('errors/404'));
 

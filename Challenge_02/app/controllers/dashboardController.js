@@ -1,13 +1,18 @@
-const { Category, Snippet } = require('../models/');
+const { Project, Section, User } = require('../models/');
 
 module.exports = {
   async index(req, res, next) {
     try {
-      const categories = await Category.findAll({
-        include: [Snippet],
+      const projects = await Project.findAll({
+        include: [Section],
         where: { UserId: req.session.user.id },
       });
-      return res.render('dashboard/index', { categories });
+
+      const user = await User.findOne({
+        where: { id: req.session.user.id },
+      });
+
+      return res.render('dashboard/index', { projects, user });
     } catch (err) {
       return next(err);
     }
