@@ -3,7 +3,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const { sequelize } = require('../app/models');
 
 module.exports = {
-  secret: 'snippetfy2018_',
+  secret: 'docfy2018_',
   resave: false,
   saveUninitialized: false,
   store: new SequelizeStore({

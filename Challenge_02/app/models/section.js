@@ -9,8 +9,8 @@ const md = require('markdown-it')({
 });
 
 module.exports = (sequelize, DataTypes) => {
-  const Snippet = sequelize.define(
-    'Snippet',
+  const Section = sequelize.define(
+    'Section',
     {
       title: DataTypes.STRING,
       content: DataTypes.TEXT,
@@ -28,6 +28,6 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
   );
-  Snippet.associate = models => Snippet.belongsTo(models.Category);
-  return Snippet;
+  Section.associate = models => Section.belongsTo(models.Project);
+  return Section;
 };

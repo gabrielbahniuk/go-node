@@ -2,8 +2,12 @@
 
 {% block body %}
   <div class="wrapper">
-    {% include 'partials/nav.njk' %}
-    {% include 'partials/snippets.njk' %}
+    {% include 'partials/header.njk' %}
+    {% include 'partials/projects.njk' %}
+
+          {% for project in projects %}
+            <a href="/app/projects/{{ project.id }}/sections/">{{ project.title}}</a>
+          {% endfor %}
 
     <section class="snippet-content">
       <div class="actions">
