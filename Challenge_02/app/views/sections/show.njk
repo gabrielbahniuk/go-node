@@ -5,22 +5,15 @@
   {% include 'partials/header.njk' %}
   <section id="main">
   <div class="container">
-        <header>
-          <h2>{{ project.title }}</h2>
-          <div class="addon">
-            <form action="/app/projects/{{ activeProject }}?_method=DELETE" method="post">
-              <button class="btn btn-danger" type="submit">Excluir projeto</button>
-            </form>
-          </div>
-        </header>
+    {% include 'partials/projects.njk' %}
         <section id="content">
     {% include 'partials/navSections.njk' %}
           <article>
             <div class="project-header">
               <h1>{{ currentSection.title }}</h1>
-                <button type="submit" data-modal-open="#edit-section" class="btn-edit-section">Editar seção</button>
+                <button type="submit" data-modal-open="#edit-section" class="btn-edit-section">Edit</button>
               <form action="/app/projects/{{ activeProject }}/sections/{{ currentSection.id }}?_method=DELETE" method="post">
-                <button type="submit" class="btn-remove-section">Remover seção</button>
+                <button type="submit" class="btn-remove-section">Remove</button>
               </form>
             </div>
             <div class="content">{{ currentSection.formattedContent | safe }} </div>
@@ -31,16 +24,14 @@
   </div>
 
   <div class="modal" id="edit-section">
-            <form class="modal-content" method="post"
-                  action="/app/projects/{{ activeProject }}/sections/{{ currentSection.id }}?_method=PUT"
-              <input type="text" name="title" value="{{ currentSection.title }}">
-              <div class="content-container">
-                <textarea name="content" class="mde">{{ currentSection.content }}</textarea>
-              </div>
-              <button type="submit">SALVAR SECTION</button>
-              <a href="#" data-modal-close="#edit-section">CANCELAR</a>
-            </form>
+      <form class="modal-content" method="post"
+                 action="/app/projects/{{ activeProject }}/sections/{{ currentSection.id }}?_method=PUT"
+        <input type="text" name="title" value="{{ currentSection.title }}">
+        <div class="content-container">
+          <textarea name="content" class="mde">{{ currentSection.content }}</textarea>
+        </div>
+        <button type="submit">SAVE</button>
+        <a href="#" data-modal-close="#edit-section">CANCEL</a>
+    </form>
 </div>
-
-
 {% endblock %}

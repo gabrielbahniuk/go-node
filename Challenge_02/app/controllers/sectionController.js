@@ -5,7 +5,7 @@ module.exports = {
     try {
       const { projectId } = req.params;
       const section = await Section.create({ ...req.body, ProjectId: projectId });
-      req.flash('success', 'Section criada com sucesso!');
+      req.flash('success', 'Section successfully created!');
       return res.redirect(`/app/projects/${projectId}/sections/${section.id}`);
     } catch (err) {
       return next(err);
@@ -51,7 +51,7 @@ module.exports = {
     try {
       const section = await Section.findById(req.params.id);
       await section.update(req.body);
-      req.flash('success', 'Section atualizada com sucesso!');
+      req.flash('success', 'Section updated!');
       return res.redirect(`/app/projects/${req.params.projectId}/sections/${section.id}`);
     } catch (err) {
       return next(err);
@@ -60,7 +60,7 @@ module.exports = {
   async destroy(req, res, next) {
     try {
       await Section.destroy({ where: { id: req.params.id } });
-      req.flash('success', 'Section removida com sucesso!');
+      req.flash('success', 'Section removed!');
       return res.redirect(`/app/projects/${req.params.projectId}`);
     } catch (err) {
       return next(err);

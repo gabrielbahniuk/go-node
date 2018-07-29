@@ -4,7 +4,7 @@ module.exports = {
   async store(req, res, next) {
     try {
       const project = await Project.create({ ...req.body, UserId: req.session.user.id });
-      req.flash('success', 'Projeto criado com sucesso!');
+      req.flash('success', 'Project successfully created!');
       return res.redirect(`/app/projects/${project.id}`);
     } catch (err) {
       return next(err);
@@ -44,7 +44,7 @@ module.exports = {
   async destroy(req, res, next) {
     try {
       await Project.destroy({ where: { id: req.params.id } });
-      req.flash('success', 'Projeto removido com sucesso!');
+      req.flash('success', 'Project removed!');
       return res.redirect('/app/dashboard');
     } catch (err) {
       return next(err);
