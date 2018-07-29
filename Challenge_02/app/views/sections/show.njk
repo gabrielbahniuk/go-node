@@ -18,17 +18,29 @@
           <article>
             <div class="project-header">
               <h1>{{ currentSection.title }}</h1>
-              <form action="/app/projects/{{ activeProject }}/sections/{{ currentSection.id }}?_method=PUT" method="post">
-                <button type="submit" class="btn-edit-section">Editar seção</button>
-              </form>
+                <button type="submit" data-modal-open="#edit-section" class="btn-edit-section">Editar seção</button>
               <form action="/app/projects/{{ activeProject }}/sections/{{ currentSection.id }}?_method=DELETE" method="post">
                 <button type="submit" class="btn-remove-section">Remover seção</button>
               </form>
             </div>
-            <p>{{ currentSection.content}} </p>
+            <div class="content">{{ currentSection.formattedContent | safe }} </div>
           </article>
         </section>
       </div>
     </section>
   </div>
+
+  <div class="modal" id="edit-section">
+            <form class="modal-content" method="post"
+                  action="/app/projects/{{ activeProject }}/sections/{{ currentSection.id }}?_method=PUT"
+              <input type="text" name="title" value="{{ currentSection.title }}">
+              <div class="content-container">
+                <textarea name="content" class="mde">{{ currentSection.content }}</textarea>
+              </div>
+              <button type="submit">SALVAR SECTION</button>
+              <a href="#" data-modal-close="#edit-section">CANCELAR</a>
+            </form>
+</div>
+
+
 {% endblock %}
