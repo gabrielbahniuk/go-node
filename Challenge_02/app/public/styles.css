@@ -4,6 +4,30 @@ html,
 body {
   height: 100%;
 }
+
+.alert {
+  position: absolute;
+  min-width: 300px;
+  right: 20px;
+  top: 20px;
+  background: #0ac699;
+  color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  font-size: 14px;
+  transition: all 0.2s;
+  opacity: 1;
+}
+
+.alert-danger {
+  background: #cc6161;
+}
+
+.alert-hidden {
+  opacity: 0;
+}
+
 .btn-edit-section {
   border: none;
   margin: 0 0 0 3em;
