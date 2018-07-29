@@ -6,16 +6,16 @@
                 </a>
             {% endfor %}
             </div>
-              <button type="submit" data-modal-open="#create-section" class="btn">Add Section <img src="../../../../img/plus.svg"></button>
+              <button type="submit" data-modal-open="#create-section" class="btn">Add Section <img src="/img/plus.svg"></button>
       </nav>
           <div class="modal" id="create-section">
             <form class="modal-content" method="post"
                   action="/app/projects/{{ project.id }}/sections/create">
-              <input type="text" name="title" placeholder="Titulo da seção">
+              <input type="text" name="title" placeholder="Section title...">
               <div class="content-container">
-                <textarea name="content" class="mde" placeholder="Conteúdo da seção"></textarea>
+                <textarea name="content" class="mde" placeholder="Section content..."></textarea>
               </div>
-              <button type="submit">SALVAR SECTION</button>
-              <a href="#" data-modal-close="#create-section">CANCELAR</a>
+              <button type="submit">SAVE</button>
+              <a href="#" data-modal-close="#create-section">CANCEL</a>
             </form>
         </div>
